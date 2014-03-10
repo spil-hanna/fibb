@@ -1,21 +1,18 @@
 -module(fibb).
 
--export([fibb/1, list_count/1, fibb_diff/1]).
+-export([
+	 fibb/1, 
+	 list_count/1, 
+	 fibb_diff/1
+	]).
 
-% naive implementation
-% fibb(1) -> 1;
-% fibb(2) -> 1;
-% fibb(X) -> fibb(X-1) + fibb(X-2).
-
+fibb_helper(X, X, F, _F1) ->
+	F;
 
 fibb_helper(X, K, F, F1) ->
 	% F == fibb(K)
-	% F1 = fibb(K-1)
-	if K == X ->
-		   F;
-	   true ->
-		   fibb_helper(X, K+1, F+F1, F)
-	end.
+	% F1 == fibb(K-1)
+	fibb_helper(X, K+1, F+F1, F).
 
 fibb(1) -> 1;
 fibb(2) -> 1;
