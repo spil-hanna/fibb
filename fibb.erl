@@ -23,19 +23,35 @@ fibb(X) ->
 list_count_helper([], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
 	[C0, C1, C2, C3, C4, C5, C6, C7, C8, C9];
 
-list_count_helper([H|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
-        case H of
-		$0 -> list_count_helper(T, [C0+1, C1, C2, C3, C4, C5, C6, C7, C8, C9]);
-		$1 -> list_count_helper(T, [C0, C1+1, C2, C3, C4, C5, C6, C7, C8, C9]);
-		$2 -> list_count_helper(T, [C0, C1, C2+1, C3, C4, C5, C6, C7, C8, C9]);
-		$3 -> list_count_helper(T, [C0, C1, C2, C3+1, C4, C5, C6, C7, C8, C9]);
-		$4 -> list_count_helper(T, [C0, C1, C2, C3, C4+1, C5, C6, C7, C8, C9]);
-		$5 -> list_count_helper(T, [C0, C1, C2, C3, C4, C5+1, C6, C7, C8, C9]);
-		$6 -> list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6+1, C7, C8, C9]);
-		$7 -> list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6, C7+1, C8, C9]);
-		$8 -> list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6, C7, C8+1, C9]);
-		$9 -> list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9+1])
-	end. 
+list_count_helper([$0|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0+1, C1, C2, C3, C4, C5, C6, C7, C8, C9]);
+
+list_count_helper([$1|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1+1, C2, C3, C4, C5, C6, C7, C8, C9]);
+
+list_count_helper([$2|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2+1, C3, C4, C5, C6, C7, C8, C9]);
+
+list_count_helper([$3|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3+1, C4, C5, C6, C7, C8, C9]);
+
+list_count_helper([$4|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3, C4+1, C5, C6, C7, C8, C9]);
+
+list_count_helper([$5|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3, C4, C5+1, C6, C7, C8, C9]);
+
+list_count_helper([$6|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6+1, C7, C8, C9]);
+
+list_count_helper([$7|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6, C7+1, C8, C9]);
+
+list_count_helper([$8|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6, C7, C8+1, C9]);
+
+list_count_helper([$9|T], [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9]) ->
+	list_count_helper(T, [C0, C1, C2, C3, C4, C5, C6, C7, C8, C9+1]).
 
 list_count(L) ->
 	list_count_helper(L, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]).
